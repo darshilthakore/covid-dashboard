@@ -1,1 +1,17 @@
-<p>citylist works!</p>
+<div class="container"
+    fxLayout="column"
+    fxLayoutGap="10px">
+
+    <div fxFlex *ngIf="metroData">
+        <mat-grid-list cols="3" rowHeight="200px">
+            <mat-grid-tile *ngFor="let city of metroData">
+                <mat-grid-tile-header>{{city.city}}</mat-grid-tile-header>
+                <h3>Active cases: {{city.active}}</h3><br>
+                <h3>Recovered: {{city.recovered}}</h3><br>
+                <h3>Deceased: {{city.deceased}}</h3><br>
+                <h3>Confirmed: {{city.confirmed}}</h3><br>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+
+</div>

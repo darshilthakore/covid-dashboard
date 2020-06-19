@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CitylistService } from '../services/citylist.service';
+import { Citydetails } from '../shared/citydetails';
 
 @Component({
   selector: 'app-citylist',
@@ -9,7 +10,7 @@ import { CitylistService } from '../services/citylist.service';
 export class CitylistComponent implements OnInit {
 
   metro = ['Ahmedabad', 'Kolkata', 'Pune', 'Mumbai', 'New Delhi', 'Hyderabad']
-  metroData = {}
+  metroData= [];
   constructor(
     private citylistService: CitylistService) { }
 
@@ -18,19 +19,27 @@ export class CitylistComponent implements OnInit {
 
   }
 
+
+  // filtering the list of metro cities
+  
   getCities() {
     this.citylistService.getCities().subscribe(
-      response => {
-        // console.log(response);
-        
-        for (var x in response) {
-          // console.log(response[x].districtData);
-          for (var district in response[x].districtData) {
-            // console.log(district);
+      response => {    
+        // console.log("Response: ", response);    
+        for (var state in response) {
+          for (var district in response[state].districtData) {
             if ( this.metro.includes(district) ) {
-              // console.log(response[x].districtData[district]);
-              this.metroData[district] = response[x].districtData[district];
-              // console.log(this.metroData);
+              console.log(district);
+              // this.metroData.push({ [district]: response[state].districtData[district]});
+              let citydetails = new Citydetails();
+              var data = response[state].districtData[district];
+              citydetails.active = data['active'];
+              citydetails.city = district;
+              citydetails.confirmed = data['confirmed'];
+              citydetails.recovered = data['recovered'];
+              citydetails.deceased = data['deceased'];
+              citydetails.delta = data['delta'];
+              this.metroData.push(citydetails);
             }
           }
         }
