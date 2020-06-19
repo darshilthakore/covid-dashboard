@@ -10,6 +10,6 @@ export class CitylistService {
     private http: HttpClient) { }
 
     getCities() {
-      return this.http.get("https://api.covid19india.org/data.json");
+      return this.http.get("https://api.covid19india.org/state_district_wise.json");
     }
 }
