@@ -13,7 +13,8 @@ import { Chart } from 'chart.js';
   styleUrls: ['./citydetail.component.scss']
 })
 export class CitydetailComponent implements OnInit, AfterViewInit {
-  @ViewChild('canvas', {static: false}) canvas: ElementRef;
+  @ViewChild('doughnut', {static: false}) canvas: ElementRef;
+  @ViewChild('bar', {static: false}) bar: ElementRef;
 
   public context: CanvasRenderingContext2D;
 
@@ -57,6 +58,19 @@ export class CitydetailComponent implements OnInit, AfterViewInit {
         ]
       }
     });
+
+    this.context = this.bar.nativeElement.getContext('2d');
+    this.chart = new Chart(this.context, {
+      type: 'bar',
+      data: {
+        labels: ["Active", "Confirmed", "Deceased", "Recovered"],
+        datasets: [{
+          data: [this.citydetails.active, this.citydetails.confirmed, this.citydetails.deceased, this.citydetails.recovered],
+          label: "Cases comparision - " + this.citydetails.city,
+          backgroundColor: ["orange", "skyblue","red", "green"]
+        }]
+      }
+    })
 
   }
 
