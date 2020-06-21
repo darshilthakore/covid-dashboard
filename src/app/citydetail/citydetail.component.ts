@@ -74,6 +74,10 @@ export class CitydetailComponent implements OnInit, AfterViewInit {
 
   }
 
+  goBack() {
+    this.router.navigate(['']);
+  }
+
   // createChart(dabba) {
     
   //   this.chart = new Chart(dabba, {
