@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CitylistService } from '../services/citylist.service';
 import { Citydetails } from '../shared/citydetails';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-citylist',
@@ -11,8 +12,11 @@ export class CitylistComponent implements OnInit {
 
   metro = ['Ahmedabad', 'Kolkata', 'Pune', 'Mumbai', 'New Delhi', 'Hyderabad']
   metroData= [];
+  
   constructor(
-    private citylistService: CitylistService) { }
+    private citylistService: CitylistService,
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
     this.getCities();
@@ -46,6 +50,11 @@ export class CitylistComponent implements OnInit {
       }
     )
     console.log(this.metroData);
+  }
+
+  goTo(city) {
+    console.log("Selected city:", city);
+    this.router.navigate(['/citydetail'], {queryParams: {'city': JSON.stringify(city)}});
   }
 
 } 

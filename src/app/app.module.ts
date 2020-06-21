@@ -12,12 +12,14 @@ import { AppComponent } from './app.component';
 
 import 'hammerjs';
 import { CitylistComponent } from './citylist/citylist.component';
+import { CitydetailComponent } from './citydetail/citydetail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CitylistComponent,
+    CitydetailComponent,
   ],
   imports: [
     BrowserModule,

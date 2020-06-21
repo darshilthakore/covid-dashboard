@@ -4,12 +4,12 @@
 
     <div fxFlex *ngIf="metroData">
         <mat-grid-list cols="3" rowHeight="200px">
-            <mat-grid-tile *ngFor="let city of metroData">
+            <mat-grid-tile *ngFor="let city of metroData" (click)="goTo(city)" appHighlight>
                 <mat-grid-tile-header>{{city.city}}</mat-grid-tile-header>
-                <h3>Active cases: {{city.active}}</h3><br>
-                <h3>Recovered: {{city.recovered}}</h3><br>
-                <h3>Deceased: {{city.deceased}}</h3><br>
-                <h3>Confirmed: {{city.confirmed}}</h3><br>
+                <p matLine>Active cases: {{city.active}}</p><br>
+                <p matLine>Recovered: {{city.recovered}}</p><br>
+                <p matLine>Deceased: {{city.deceased}}</p><br>
+                <p matLine>Confirmed: {{city.confirmed}}</p><br>
             </mat-grid-tile>
         </mat-grid-list>
     </div>
