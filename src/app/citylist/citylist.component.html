@@ -6,10 +6,15 @@
         <mat-grid-list cols="3" rowHeight="200px">
             <mat-grid-tile *ngFor="let city of metroData" (click)="goTo(city)" appHighlight>
                 <mat-grid-tile-header>{{city.city}}</mat-grid-tile-header>
-                <p matLine>Active cases: {{city.active}}</p><br>
-                <p matLine>Recovered: {{city.recovered}}</p><br>
-                <p matLine>Deceased: {{city.deceased}}</p><br>
-                <p matLine>Confirmed: {{city.confirmed}}</p><br>
+                <mat-list>
+                    <mat-list-item>
+                        <p matLine style="color: orange;"><b>Active cases: {{city.active}}</b></p><br>
+                        <p matLine style="color: green;"><b>Recovered: {{city.recovered}}</b></p><br>
+                        <p matLine style="color: red;"><b>Deceased: {{city.deceased}}</b></p><br>
+                        <p matLine style="color: palevioletred;"><b>Confirmed: {{city.confirmed}}</b></p><br>
+                    </mat-list-item>
+                </mat-list>
+
             </mat-grid-tile>
         </mat-grid-list>
     </div>

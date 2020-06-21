@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 })
 export class CitylistComponent implements OnInit {
 
-  metro = ['Ahmedabad', 'Kolkata', 'Pune', 'Mumbai', 'New Delhi', 'Hyderabad']
+  metro = ['Ahmedabad', 'Kolkata', 'Pune', 'Mumbai', 'New Delhi', 'Hyderabad', 'Chennai', 'Surat'] //predefined metro cities
   metroData= [];
   
   constructor(
-    private citylistService: CitylistService,
+    private citylistService: CitylistService, //service for retreiving api
     private router: Router,
     ) { }
 
@@ -24,7 +24,7 @@ export class CitylistComponent implements OnInit {
   }
 
 
-  // filtering the list of metro cities
+  // filtering the list of metro cities from the retrieved api data after subscribing to the observable
   
   getCities() {
     this.citylistService.getCities().subscribe(
@@ -52,6 +52,7 @@ export class CitylistComponent implements OnInit {
     console.log(this.metroData);
   }
 
+  //on clicking the grid for the city, selected city's analysis screen will be rendered
   goTo(city) {
     console.log("Selected city:", city);
     this.router.navigate(['/citydetail'], {queryParams: {'city': JSON.stringify(city)}});

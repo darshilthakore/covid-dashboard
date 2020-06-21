@@ -2,7 +2,18 @@
     <button mat-button (click)="goBack()"></button>
 </div> -->
 <button mat-button (click)="goBack()">Back</button>
-<div >
-    <canvas #doughnut width="30px"></canvas>
-    <canvas #bar width="30px"></canvas>
-</div>
+<mat-list>
+    <mat-list-item>
+        <h3 matLine><b>City:</b> {{citydetails.city}}</h3>
+        <p matLine><b>Total Cases:</b> {{citydetails.confirmed}}</p>
+        <p matLine><b>Active Cases:</b> {{citydetails.active}}</p>
+        <p matLine><b>Recovered:</b> {{citydetails.recovered}}</p>
+        <p matLine><b>Deceased:</b> {{citydetails.deceased}}</p>
+    </mat-list-item>
+</mat-list>
+<mat-grid-list cols="2">
+    <mat-grid-tile><canvas #doughnut></canvas></mat-grid-tile>
+    <mat-grid-tile><canvas #bar></canvas></mat-grid-tile>
+    <mat-grid-tile><canvas #pie></canvas></mat-grid-tile>
+    <mat-grid-tile><canvas #polar></canvas></mat-grid-tile>
+</mat-grid-list>
